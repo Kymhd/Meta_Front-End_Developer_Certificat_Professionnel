@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const students = [
+            {
+                name: 'John',
+                notes: [ 6, 2, 18, 5, 12]
+            },
+            {
+                name: 'Kayoum',
+                notes: [ 7, 17, 12, 8, 16]
+            },
+            {
+                name: 'Abou',
+                notes: [ 10, 9, 18, 19, 16]
+            },
+            {
+                name: 'Ali',
+                notes: [ 1, 2, 8, 11, 7]
+            },
+        ]
+
+        const  moyenne = (notes) => {
+            let sum = 0
+            for (let note of notes){
+                sum = sum + note
+            }
+            return sum / notes.length
+        } 
+
+        const compareStudent = (a, b) => {
+            return b.moyenne - a.moyenne
+        }
+
+        for (let student of students){
+            student.moyenne = moyenne(student.notes)
+        }
+
+        const studentFormat = (student) => {
+            return `${student.name} avec une moyenne de 
+            ${student.moyenne} avec une note maximum de 
+            ${Math.max(...student.notes)}`
+        }
+
+        students.sort(compareStudent)
+
+        console.log(`Top 3 etudiant
+            1: ${studentFormat(students[0])}
+            2: ${studentFormat(students[1])}
+            3: ${studentFormat(students[2])}
+        `)
+
+
+    //     function isPalindrome (word){
+    //         const letters = word.split('').reverse().join('')
+    //         return word === letters
+    //     }
+    // console.log(isPalindrome("kayak"))
+    // console.log(isPalindrome("anal"))
+    // console.log(isPalindrome("ama"))
+    </script>
+</body>
+</html>
